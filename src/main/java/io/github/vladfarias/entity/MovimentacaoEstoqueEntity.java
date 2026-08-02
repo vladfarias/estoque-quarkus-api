@@ -1,7 +1,10 @@
 package io.github.vladfarias.entity;
 
+import io.github.vladfarias.enums.TipoMovimentacao;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,8 +32,9 @@ public class MovimentacaoEstoqueEntity {
     @JoinColumn(name = "produto_id", nullable = false)
     private ProdutoEntity produto;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false)
-    private String tipo;
+    private TipoMovimentacao tipo;
 
     @Column(name = "quantidade", nullable = false)
     private Integer quantidade;
@@ -46,7 +50,7 @@ public class MovimentacaoEstoqueEntity {
 
     public MovimentacaoEstoqueEntity(
             ProdutoEntity produto,
-            String tipo,
+            TipoMovimentacao tipo,
             Integer quantidade,
             String referencia,
             String observacao,

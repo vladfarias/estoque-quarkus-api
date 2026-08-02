@@ -1,5 +1,6 @@
 package io.github.vladfarias.dto;
 
+import io.github.vladfarias.enums.TipoMovimentacao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,8 @@ public class MovimentacaoEstoqueResponseDTO {
     private Long produtoId;
     private String sku;
 
-    private String tipo;
+    private TipoMovimentacao tipo;
+
     private Integer quantidade;
 
     private String referencia;

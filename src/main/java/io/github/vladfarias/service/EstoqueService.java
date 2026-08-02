@@ -15,6 +15,7 @@ import io.github.vladfarias.repository.ProdutoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import io.github.vladfarias.enums.TipoMovimentacao;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -89,7 +90,7 @@ public class EstoqueService {
 
         registrarMovimentacao(
                 produto,
-                "ENTRADA",
+                TipoMovimentacao.ENTRADA,
                 requestDTO
         );
 
@@ -118,7 +119,7 @@ public class EstoqueService {
 
         registrarMovimentacao(
                 estoque.getProduto(),
-                "SAIDA",
+                TipoMovimentacao.SAIDA,
                 requestDTO
         );
 
@@ -152,7 +153,7 @@ public class EstoqueService {
 
         registrarMovimentacao(
                 estoque.getProduto(),
-                "RESERVA",
+                TipoMovimentacao.RESERVA,
                 requestDTO
         );
 
@@ -186,7 +187,7 @@ public class EstoqueService {
 
         registrarMovimentacao(
                 estoque.getProduto(),
-                "CANCELAMENTO",
+                TipoMovimentacao.CANCELAMENTO,
                 requestDTO
         );
 
@@ -252,9 +253,9 @@ public class EstoqueService {
 
     private void registrarMovimentacao(
             ProdutoEntity produto,
-            String tipo,
+            TipoMovimentacao tipo,
             MovimentacaoEstoqueRequestDTO requestDTO
-    ) {
+    ){
         MovimentacaoEstoqueEntity movimentacao =
                 new MovimentacaoEstoqueEntity(
                         produto,
